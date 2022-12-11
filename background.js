@@ -327,8 +327,8 @@ const startCapture = function() {
 };
 
 
-// chrome.commands.onCommand.addListener((command) => {
-//   if (command === "start") {
-//     startCapture();
-//   }
-// });
+chrome.commands.onCommand.addListener((command) => {
+  if (command === "start") {
+    startCapture();
+  }
+});
