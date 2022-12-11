@@ -1,40 +1,56 @@
 <html>
-  <head>
-    <title>iCapture Options</title>
-    <script type="module" src="complete.js"></script>
-    <link rel="stylesheet" href="complete.css" type="text/css">
-  </head>
-  <body>
-    <div class="header"><img src="./icon.png"/> <h1 class="header-title">iCapture</h1></div>
-    <div class="inner">
-      <div class="progress">
-        <label for="progrssContainer">Encoding Progress:</label>
-        <div id="progressContainer">
-          <div id="encodeProgress"></div>
-        </div>
+
+<head>
+  <title>iCapture Options</title>
+  <script type="module" src="complete.js"></script>
+  <link rel="stylesheet" href="complete.css" type="text/css">
+</head>
+
+<body>
+  <div class="header">
+    <img src="./icon.png" />
+    <h1 class="header-title">iCapture</h1>
+  </div>
+  <div class="inner">
+    <div class="progress">
+      <label for="progrssContainer">Encoding Progress:</label>
+      <div id="progressContainer">
+        <div id="encodeProgress"></div>
       </div>
-      <p id="status"></p>
     </div>
-    <div class="params">
-      <div class="param">
-        <input type="checkbox" id="Sentimental" name="Sentimental" value="Sentimental">
-        <label for="Sentimental"> Run Sentimental Analytics </label><br>
-      </div><div class="param">
-        <input type="checkbox" id="Summarisation" name="Summarisation" value="Summarisation">
-        <label for="Summarisation"> Run Summarisation </label><br></div><div class="param">
-          <input type="checkbox" id="Moderation" name="Moderation" value="Moderation">
-          <label for="Content"> Run Content Moderation </label><br></div><div class="param">
-            <input type="checkbox" id="Phrases" name="Phrases" value="Phrases">
-            <label for="Phrases"> Detect important phrases and words</label><br></div><div class="param">
-              <input type="checkbox" id="PII" name="PII" value="PII">
-              <label for="PII"> PII Redaction </label><br></div><div class="param">
-                <input type="checkbox" id="Topic" name="Topic" value="Topic">
-                <label for="Topic"> Detect Topic </label><br></div>
-              </div>
-              <div class="buttonContainer">
-                <div class="button" id="saveCapture">Start Analytics</div>
-                <div class="button" id="close">Close</div>
-              </div>
-    <div class="notes">Thank you for using the extension!</div>
-  </body>
+    <p id="status"></p>
+  </div>
+  <div class="params"> Select audio analysis to run
+    <div class="param">
+      <input type="checkbox" id="Sentimental" name="Sentimental" value="Sentimental">
+      <label for="Sentimental"> Sentimental Analytics </label><br>
+    </div>
+    <div class="param">
+      <input type="checkbox" id="Summarisation" name="Summarisation" value="Summarisation">
+      <label for="Summarisation"> Summarisation </label><br>
+    </div>
+    <div class="param">
+      <input type="checkbox" id="Moderation" name="Moderation" value="Moderation">
+      <label for="Content"> Content Moderation </label><br>
+    </div>
+    <div class="param">
+      <input type="checkbox" id="Phrases" name="Phrases" value="Phrases">
+      <label for="Phrases"> Important Phrases Detection </label><br>
+    </div>
+    <div class="param">
+      <input type="checkbox" id="PII" name="PII" value="PII">
+      <label for="PII"> PII Redaction </label><br>
+    </div>
+    <div class="param">
+      <input type="checkbox" id="Topic" name="Topic" value="Topic">
+      <label for="Topic"> Topic Detection </label><br>
+    </div>
+  </div>
+  <div class="buttonContainer">
+    <div class="button" id="saveCapture">Start Analytics</div>
+    <div class="button" id="close">Close</div>
+  </div>
+  <!-- <div class="notes">Thank you for using the extension!</div> -->
+</body>
+
 </html>

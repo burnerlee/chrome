@@ -3,7 +3,7 @@
   align-items: center;
   padding-bottom: 15px;
   padding-left: 20px;
-  border-bottom: 2px solid darkred;
+  border-bottom: 2px solid #008ECC;
 }
 
 .header-title {
@@ -56,9 +56,9 @@ label {
 
 .button {
   padding: 10px;
-  border: 2px solid darkred;
+  border: 2px solid #008ECC;
   font-size: 16px;
-  background-color: lavenderblush;
+  background-color: #73C2FB;
   font-weight: bold;
   margin: 10px 20px;
   cursor: pointer;
@@ -68,8 +68,8 @@ label {
 }
 
 .button:hover {
-  color: red;
-  background-color: darkred;
+  /* color: red; */
+  background-color: #008ECC;
 }
 
 #save {
@@ -78,7 +78,7 @@ label {
 }
 
 #status {
-  color: red;
+  /* color: red; */
   margin-top: 8px;
   margin-left: 50px;
   font-size: 14px;

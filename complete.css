@@ -1,36 +1,55 @@
+body {
+  margin: 5% 20%;
+}
+
 .header {
   display: flex;
+  flex-direction: row;
   align-items: center;
   padding-bottom: 15px;
   padding-left: 20px;
-  border-bottom: 2px solid darkred;
+  border-bottom: 2px solid #008ECC;
 }
 
 .header-title {
-  padding: 0 5px;
+  padding: 0 15px;
+  font-size: 48px;
 }
 
 .progress {
   margin: 50px 20px 10px 20px;
   font-size: 16px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .notes {
   margin: 0 20px;
 }
 
+.params {
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  /* align-items: baseline; */
+  margin: 0% 35%;
+}
+.param {
+  font-size: 15px;
+}
+
 #progressContainer {
   margin-left: 5px;
-  width: 500px;
+  width: 75%;
   height: 18px;
-  background-color: lavenderblush;
+  background-color: #73C2FB;
 }
 
 #encodeProgress {
   height: 100%;
   width: 0%;
-  background-color: darkred;
+  background-color: #008ECC;
 }
 
 #saveCapture {
@@ -39,6 +58,8 @@
 
 .buttonContainer {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #status {
@@ -49,9 +70,9 @@
 
 .button {
   padding: 10px;
-  border: 2px solid darkred;
+  border: 2px solid #008ECC;
   font-size: 16px;
-  background-color: lavenderblush;
+  background-color: #73C2FB;
   font-weight: bold;
   margin: 10px 20px;
   cursor: pointer;
@@ -59,8 +80,8 @@
 }
 
 .button:hover {
-  color: red;
-  background-color: darkred;
+  /* color: red; */
+  background-color: #008ECC;
 }
 
 #review {
