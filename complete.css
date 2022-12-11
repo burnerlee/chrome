@@ -1,5 +1,8 @@
 body {
   margin: 5% 20%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header {
@@ -14,6 +17,10 @@ body {
 .header-title {
   padding: 0 15px;
   font-size: 48px;
+}
+
+.inner {
+  width: 60% !important;
 }
 
 .progress {
@@ -96,6 +103,7 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   margin-bottom: 1rem;
+  width: 50% !important;
 }
 .param {
   margin: 0.1rem 0;
@@ -105,4 +113,18 @@ body {
   visibility: hidden;
   height: 100px;
   width: 100px;
+}
+
+#analysis{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80% !important;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 50% !important;
 }

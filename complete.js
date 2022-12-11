@@ -6,6 +6,7 @@ function showAnalysis(body){
     ana.appendChild(getHeading("Sentimental Analysis Results"));
     for(let i = 0; i < body.sentiment_analysis_results.length;i++){
       ana.appendChild(getSpan(body.sentiment_analysis_results[i]));
+      ana.appendChild(document.createElement("br"));
     }
   }
   if(document.getElementById("Summarisation").checked){
@@ -14,36 +15,37 @@ function showAnalysis(body){
   }
   if(document.getElementById("Moderation")){
     ana.appendChild(getHeading("Content Moderation"));
-    if(body.labels.length > 0){
+    let res = body.content_safety_labels;
+    if(res.status == 'success'){
       ana.appendChild(showPara("The following labels were found in the context"));
-      for(let i=0;i<body.labels.length;i++){
-        ana.appendChild(showPara(body.labels[i]));
+      for(let i=0;i<res.results.length;i++){
+        ana.appendChild(showPara(body.results[i].text));
       }
     }else{
       ana.appendChild(showPara("No labels were found"))
     }
   }
   if(document.getElementById("Phrases").checked){
-    let res = body.auto_highlight_results;
-    ana.append(appendChild(getHeading("Important phrases")));
+    let res = body.auto_highlights_result;
+    ana.appendChild(getHeading("Important phrases"));
     if(res.status == 'success'){
       for(let i=0;i<res.results.length;i++){
-        ana.appendChild(showPara(res.results[i].text + " - occured " + res.results[i].count + " times"));
+        ana.appendChild(showPara(res.results[i].text));
       }
     }else{
-      ana.append(showPara("No important phrases were found"));
+      ana.appendChild(showPara("No important phrases were found"));
     }
   }
 
   if(document.getElementById("Topic").checked){
     let res = body.iab_categories_result;
-    ana.append(appendChild(getHeading("Suggested topics")));
+    ana.appendChild(getHeading("Suggested topics"));
     if(res.status == 'success'){
-      for(let i=0;i<res.results.length;i++){
-        ana.appendChild(showPara(res.results[i].text + " - with a relevance of " + res.results[i].labels + "/1.0"));
+      for(let i=0;i<res.results[0].labels.length;i++){
+        ana.appendChild(showPara(res.results[0].labels[i].label + " - with a relevance of " + res.results[0].labels[i].relevance + "/1.0"));
       }
     }else{
-      ana.append(showPara("No topics could be suggested by the algorithm"));
+      ana.appendChild(showPara("No topics could be suggested by the algorithm"));
     }
   }
 
@@ -63,11 +65,11 @@ function showPara(text){
 
 function getSpan(info){
   const node = document.createElement("span");
-  span.textContent = info.text;
+  node.innerHTML = info.text;
   if(info.sentiment == "POSITIVE"){
     node.style.color = "green";
   }else if(info.sentiment == "NEUTRAL"){
-    node.style.color = "yellow";
+    node.style.color = "orange";
   }else{
     node.style.color = "red";
   }
@@ -139,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let body = await resp.json();
         console.log(body);
         document.getElementById('loading').style.display = 'none';
+        alert("Your analysis is now ready!!")
         // console.log(url)
         // chrome.downloads.download({url: url, filename: `${currentDate}.${format}`, saveAs: true});
         showAnalysis(body);
