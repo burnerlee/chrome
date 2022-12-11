@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <div id="analysis"></div>
+    </body>
+    <script>
+        console.log("hj");
+        function showAnalysis(){
+            let ana = document.getElementById("analysis");
+            ana.appendChild(getHeading("Transcript"));
+            ana.appendChild(showPara("akfhdddddddddddddddddddddddddddddddddddd"));
+          }
+          
+          function getHeading(text){
+            const node = document.createElement("h1");
+            node.textContent = text;
+            return node;
+          }
+
+          function showPara(text){
+            const node = document.createElement("p");
+            node.textContent = text;
+            return node;
+          }
+          showAnalysis();
+    </script>
+</html>

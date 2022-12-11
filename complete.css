@@ -100,3 +100,9 @@ body {
 .param {
   margin: 0.1rem 0;
 }
+
+#loading {
+  visibility: hidden;
+  height: 100px;
+  width: 100px;
+}

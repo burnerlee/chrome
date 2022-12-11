@@ -1,3 +1,79 @@
+function showAnalysis(body){
+  let ana = document.getElementById("analysis");
+  ana.appendChild(getHeading("Transcript"));
+  ana.appendChild(showPara(body.text));
+  if(document.getElementById("Sentimental").checked){
+    ana.appendChild(getHeading("Sentimental Analysis Results"));
+    for(let i = 0; i < body.sentiment_analysis_results.length;i++){
+      ana.appendChild(getSpan(body.sentiment_analysis_results[i]));
+    }
+  }
+  if(document.getElementById("Summarisation").checked){
+    ana.appendChild(getHeading("Summary"));
+    ana.appendChild(showPara(body.summary));
+  }
+  if(document.getElementById("Moderation")){
+    ana.appendChild(getHeading("Content Moderation"));
+    if(body.labels.length > 0){
+      ana.appendChild(showPara("The following labels were found in the context"));
+      for(let i=0;i<body.labels.length;i++){
+        ana.appendChild(showPara(body.labels[i]));
+      }
+    }else{
+      ana.appendChild(showPara("No labels were found"))
+    }
+  }
+  if(document.getElementById("Phrases").checked){
+    let res = body.auto_highlight_results;
+    ana.append(appendChild(getHeading("Important phrases")));
+    if(res.status == 'success'){
+      for(let i=0;i<res.results.length;i++){
+        ana.appendChild(showPara(res.results[i].text + " - occured " + res.results[i].count + " times"));
+      }
+    }else{
+      ana.append(showPara("No important phrases were found"));
+    }
+  }
+
+  if(document.getElementById("Topic").checked){
+    let res = body.iab_categories_result;
+    ana.append(appendChild(getHeading("Suggested topics")));
+    if(res.status == 'success'){
+      for(let i=0;i<res.results.length;i++){
+        ana.appendChild(showPara(res.results[i].text + " - with a relevance of " + res.results[i].labels + "/1.0"));
+      }
+    }else{
+      ana.append(showPara("No topics could be suggested by the algorithm"));
+    }
+  }
+
+}
+
+function getHeading(text){
+  const node = document.createElement("h1");
+  node.textContent = text;
+  return node;
+}
+
+function showPara(text){
+  const node = document.createElement("p");
+  node.textContent = text;
+  return node;
+}
+
+function getSpan(info){
+  const node = document.createElement("span");
+  span.textContent = info.text;
+  if(info.sentiment == "POSITIVE"){
+    node.style.color = "green";
+  }else if(info.sentiment == "NEUTRAL"){
+    node.style.color = "yellow";
+  }else{
+    node.style.color = "red";
+  }
+  return node;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const encodeProgress = document.getElementById('encodeProgress');
   const saveButton = document.getElementById('saveCapture');
@@ -45,6 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const bucketName = 'minutescypher';
       const contents = blob;
       saveButton.onclick = async () => {
+        document.getElementById('loading').style.visibility = 'visible';
+        document.getElementsByClassName('buttonContainer')[0].style.display = 'none';
         const destFileName = `${currentDate}.${format}`;
         var fd = new FormData();
         let blobf = await fetch(url).then(r => r.blob());
@@ -56,11 +134,14 @@ document.addEventListener('DOMContentLoaded', () => {
         fd.append('PII', document.getElementById("PII").checked);
         fd.append('Topic', document.getElementById("Topic").checked);
         fd.append('Filename', destFileName);
-        console.log(fd);
+        // console.log(fd);
         const resp = await fetch("http://localhost:5050/audio", { method: 'POST', body: fd });
-        console.log(resp);
+        let body = await resp.json();
+        console.log(body);
+        document.getElementById('loading').style.display = 'none';
         // console.log(url)
         // chrome.downloads.download({url: url, filename: `${currentDate}.${format}`, saveAs: true});
+        showAnalysis(body);
       };
       saveButton.style.display = "inline-block";
     }
