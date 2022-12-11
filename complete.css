@@ -69,3 +69,13 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.params {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-bottom: 1rem;
+}
+.param {
+  margin: 0.1rem 0;
+}

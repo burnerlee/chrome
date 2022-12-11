@@ -15,22 +15,26 @@
       </div>
       <p id="status"></p>
     </div>
-    <div class="buttonContainer">
-      <div class="button" id="saveCapture">Start Analytics</div>
-      <div class="button" id="close">Close</div>
-      <input type="checkbox" id="Sentimental" name="Sentimental" value="Sentimental">
-      <label for="Sentimental"> Run Sentimental Analytics </label><br>
-      <input type="checkbox" id="Summarisation" name="Summarisation" value="Summarisation">
-      <label for="Summarisation"> Run Summarisation </label><br>
-      <input type="checkbox" id="Moderation" name="Moderation" value="Moderation">
-      <label for="Content"> Run Content Moderation </label><br>
-      <input type="checkbox" id="Phrases" name="Phrases" value="Phrases">
-      <label for="Phrases"> Detect important phrases and words</label><br>
-      <input type="checkbox" id="PII" name="PII" value="PII">
-      <label for="PII"> PII Redaction </label><br>
-      <input type="checkbox" id="Topic" name="Topic" value="Topic">
-      <label for="Topic"> Detect Topic </label><br>
-    </div>
+    <div class="params">
+      <div class="param">
+        <input type="checkbox" id="Sentimental" name="Sentimental" value="Sentimental">
+        <label for="Sentimental"> Run Sentimental Analytics </label><br>
+      </div><div class="param">
+        <input type="checkbox" id="Summarisation" name="Summarisation" value="Summarisation">
+        <label for="Summarisation"> Run Summarisation </label><br></div><div class="param">
+          <input type="checkbox" id="Moderation" name="Moderation" value="Moderation">
+          <label for="Content"> Run Content Moderation </label><br></div><div class="param">
+            <input type="checkbox" id="Phrases" name="Phrases" value="Phrases">
+            <label for="Phrases"> Detect important phrases and words</label><br></div><div class="param">
+              <input type="checkbox" id="PII" name="PII" value="PII">
+              <label for="PII"> PII Redaction </label><br></div><div class="param">
+                <input type="checkbox" id="Topic" name="Topic" value="Topic">
+                <label for="Topic"> Detect Topic </label><br></div>
+              </div>
+              <div class="buttonContainer">
+                <div class="button" id="saveCapture">Start Analytics</div>
+                <div class="button" id="close">Close</div>
+              </div>
     <div class="notes">Thank you for using the extension! Please go <div id="review">here</div> to leave a review!</div>
   </body>
 </html>
